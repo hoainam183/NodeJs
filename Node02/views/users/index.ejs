@@ -1,0 +1,60 @@
+<h1>Danh sach nguoi dung</h1>
+<a href="/users/add" class="btn btn-primary mb-3">them moi</a>
+<% if (name) { %>
+  <div class="alert alert-success mt-2"><%= name %></div>
+<% } %>
+<form action="" class="mb-3">
+  <div class="row">
+    <div class="col-3">
+      <select name="status" class="form-select">
+        <option value="all">Tat ca</option>
+        <option value="active">Kich hoat</option>
+        <option value="inactive">chua kich hoat</option>
+      </select>
+    </div>
+    <div class="col-7">
+      <input
+        type="text"
+        class="form-control"
+        name="keyword"
+        placeholder="Tu khoa ..."
+      />
+    </div>
+    <div class="col-2 d-grid">
+        <button class="btn btn-primary">tim kiem</button>
+    </div>
+  </div>
+</form>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th width="5%">STT</th>
+      <th>Ten</th>
+      <th>Email</th>
+      <th>Trang thai</th>
+      <th>Thoi gian</th>
+      <th width="5%">Sua</th>
+      <th width="5%">Xoa</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% users.forEach((user,index) => { %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.status %></td>
+      <td><%= user.update_at %></td>
+      <td>
+        <a href="/users/edit/<%= user.id %>" class="btn btn-warning">Sua</a>
+      </td>
+      <td>
+        <form action="/users/delete/<%= user.id %>" method="post" onsubmit="return confirm('Ban co chac chan muon xoa')">
+          <button class="btn btn-danger">Xoa</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

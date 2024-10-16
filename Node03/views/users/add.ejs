@@ -1,0 +1,38 @@
+<h1>Them nguoi dung</h1>
+
+<form action="" method="post" class="w-50">
+    <div class="mb-3">
+        <label for="">Ten</label>
+        <input type="text" name="name" class="form-control" placeholder="Ten...">
+    </div>
+    <div class="mb-3">
+        <label for="">Email</label>
+        <input type="text" name="email" class="form-control" placeholder="Email...">
+    </div>
+    <div class="mb-3">
+        <label for="">Trang thai</label>
+        <select name="status" class="form-select">
+            <option value="0">Chua kich hoat</option>
+            <option value="1">Kich hoat</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="">Khoa hoc</label>
+        <% courses.forEach(course => { %>
+            <label class="d-block mb-2">
+                <input type="checkbox" name="courses" value="<%= course.id %>"/> <%= course.name %>
+            </label>
+        <% }) %>
+        <!-- <label class="d-block mb-2">
+            <input type="checkbox" name="courses" value=""/>Khoa hoc 1
+        </label>
+        <label class="d-block mb-2">
+            <input type="checkbox" name="courses" value=""/>Khoa hoc 2
+        </label>
+        <label class="d-block mb-2">
+            <input type="checkbox" name="courses" value=""/>Khoa hoc 3
+        </label> -->
+    </div>
+    <button class="btn btn-success">Luu</button>
+    <button class="btn btn-danger">Huy</button>
+</form>
