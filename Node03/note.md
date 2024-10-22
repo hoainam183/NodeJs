@@ -29,3 +29,12 @@ npx sequelize-cli db:migrate:undo:all -> Reset Database về trạng thái chưa
 
 ## Tạo riêng Migration (Áp dụng khi sửa cấu trúc bảng)
 npx sequelize migration:generate --name=ten_migartion
+
+## Đăng nhập thông qua mạng xã hội
+
+- Sử dụng thông tin tài khoản mạng xã hội để lấy user --> Insert vào database --> Xác thực login trên thông tin đó
+
+# 2 bước triển khai
+
+- Tạo link chuyển hướng tới mạng xã hội để đưng nhập
+- Xử lí lấy dữ liệu và insert dữ liệu vào database sau khi đăng nhập xong trên mạng xã hội (Khi đăng nhập xong, chuyển hướng về callback url)

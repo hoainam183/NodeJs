@@ -9,18 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasOne(models.Phone, {
-        foreignKey:"user_id",
-        as:'phone'
-      }),
-      User.hasMany(models.Post, {
-        foreignKey:'user_id',
-      }),
-      User.belongsToMany(models.Course, {
-        foreignKey:'user_id',
-        through:'courses_users',
-        as:'courses',
-      })
+      // User.hasOne(models.Phone, {
+      //   foreignKey:"user_id",
+      //   as:'phone'
+      // }),
+      // User.hasMany(models.Post, {
+      //   foreignKey:'user_id',
+      // }),
+      // User.belongsToMany(models.Course, {
+      //   foreignKey:'user_id',
+      //   through:'courses_users',
+      //   as:'courses',
+      // })
     }
   }
   User.init(
@@ -31,9 +31,10 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      name: DataTypes.STRING,
+      fullname: DataTypes.STRING,
       email: DataTypes.STRING,
       status: DataTypes.BOOLEAN,
+      password: DataTypes.STRING,
     },
     {
       //Options
