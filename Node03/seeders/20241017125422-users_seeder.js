@@ -24,8 +24,8 @@ module.exports = {
         status: true,
         password:bcrypt.hashSync('123456', salt),
         created_at: new Date(),
-        updated_at: new Date(),
-      },
+        updated_at: new Date(), 
+      }, 
     ];
     // for(let i =0; i<50;i++){
     //   users.push({

@@ -19,7 +19,8 @@ router.post(
 router.get('/google/redirect', passport.authenticate('google'))
 router.get('/google/callback', passport.authenticate('google', {
   failureRedirect: 'auth/login',
-  failureFlash: true
+  failureFlash: true,
+  successRedirect: "/",
 }))
 
 router.get('/logout', (req,res) => {
