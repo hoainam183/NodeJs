@@ -57,7 +57,7 @@ module.exports = {
 
     if (keyword) {
       filters[Op.or] = {
-        name: {
+        fullname: {
           [Op.iLike]: `%${keyword}%`,
         },
         email: {
@@ -68,13 +68,13 @@ module.exports = {
     const users = await User.findAll({
       order: [
         ["id", "desc"],
-        ["name", "asc"],
+        ["fullname", "asc"],
       ],
       where: filters,
-      include: {
-        model: Phone,
-        as: "phone",
-      },
+      // include: {
+      //   model: Phone,
+      //   as: "phone",
+      // },
     });
 
     // for (let user of users){
@@ -87,7 +87,7 @@ module.exports = {
 
   add: async (req, res) => {
     const courses = await Course.findAll({
-      order: [["name", "asc"]],
+      order: [["fullname", "asc"]],
     });
     res.render("users/add", { courses });
   },
@@ -120,7 +120,7 @@ module.exports = {
     const { id } = req.params;
     try {
       const courses = await Course.findAll({
-        order: [["name", "asc"]],
+        order: [["fullname", "asc"]],
       });
 
       const user = await User.findOne({

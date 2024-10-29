@@ -1,0 +1,103 @@
+<h1>Them vai tro</h1>
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="">Ten</label>
+    <input type="text" name="name" class="form-control" placeholder="Ten..." />
+  </div>
+  <div class="mb-3">
+    <table class="table table-bordered">
+      <tr>
+        <th width="20%">Chuc nang</th>
+        <th>Quyen</th>
+      </tr>
+      <tr>
+        <td>Quan li nguoi dung</td>
+        <td>
+          <div class="row">
+            <div class="col-3">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permissions"
+                  value="user.read"
+                />Xem
+              </label>
+            </div>
+            <div class="col-3">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permissions"
+                  value="user.create"
+                />Them
+              </label>
+            </div>
+            <div class="col-3">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permissions"
+                  value="user.update"
+                />Sua
+              </label>
+            </div>
+            <div class="col-3">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permissions"
+                  value="user.delete"
+                />Xoa
+              </label>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Quan li vai tro</td>
+        <td>
+          <div class="row">
+            <div class="col-3">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permissions"
+                  value="role.read"
+                />Xem
+              </label>
+            </div>
+            <div class="col-3">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permissions"
+                  value="role.create"
+                />Them
+              </label>
+            </div>
+            <div class="col-3">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permissions"
+                  value="role.update"
+                />Sua
+              </label>
+            </div>
+            <div class="col-3">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permissions"
+                  value="role.delete"
+                />Xoa
+              </label>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <button class="btn btn-primary">Luu thay doi</button>
+  <a href="/roles" class="btn btn-danger">Huy</a>
+</form>

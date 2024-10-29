@@ -4,6 +4,6 @@ module.exports = {
             return res.redirect('/');
         }
         const error = req.flash('error');
-        res.render('auth/login',{error});
+        res.render('auth/login',{error, layout: 'auth/layout'});
     }
 }

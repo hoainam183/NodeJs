@@ -29,8 +29,8 @@
       <th width="5%">STT</th>
       <th>Ten</th>
       <th>Email</th>
-      <th>Dien thoai</th>
       <th>Trang thai</th>
+      <th width="15%">Phan quyen</th>
       <th width="5%">Sua</th>
       <th width="5%">Xoa</th>
     </tr>
@@ -39,10 +39,12 @@
     <% users.forEach((user,index) => { %>
     <tr>
       <td><%= index + 1 %></td>
-      <td><%= user.name %></td>
+      <td><%= user.fullname %></td>
       <td><%= user.email %></td>
-      <td><%- user.phone?.phone %></td>
-      <td><%= user.status %></td>
+      <td><%= user.status ? "Kich hoat" : "Chua kich hoat" %></td>
+      <td>
+        <a href="/users/premission/<%= user.id %>" class="btn btn-info">Phan quyen</a>
+      </td>
       <td>
         <a href="/users/edit/<%= user.id %>" class="btn btn-warning">Sua</a>
       </td>
