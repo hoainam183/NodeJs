@@ -10,17 +10,23 @@
     </tr>
   </thead>
   <tbody>
-    <td>1</td>
-    <td>1</td>
-    <td>
-        <form action="" method="post">
-            <button class="btn btn-warning">Sua</button>
+    <% roles.forEach((role, index) => { %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= role.name %></td>
+      <td>
+        <a href="/roles/edit/<%= role.id %>" class="btn btn-warning">Sua</a>
+      </td>
+      <td>
+        <form
+          action="/roles/delete/<%= role.id %>"
+          method="post"
+          onsubmit="return confirm('ban co chac chan xoa')"
+        >
+          <button class="btn btn-danger">Xoa</button>
         </form>
-    </td>
-    <td>
-        <form action="" method="post" onsubmit="return confirm('ban co chac chan xoa')">
-            <button class="btn btn-danger">Xoa</button>
-        </form>
-    </td>
+      </td>
+    </tr>
+    <% }) %>
   </tbody>
 </table>

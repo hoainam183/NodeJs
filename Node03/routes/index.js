@@ -17,4 +17,9 @@ router.get('/send-mail',async (req,res) => {
 router.get('/roles',roleController.index);
 router.get('/roles/add',roleController.add);
 router.post('/roles/add',roleController.handleAdd);
+
+router.get('/roles/edit/:id',roleController.edit);
+router.post('/roles/edit/:id',roleController.handleEdit);
+
+router.post('/roles/delete/:id',roleController.delete);
 module.exports = router;
