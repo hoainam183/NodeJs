@@ -1,8 +1,5 @@
 const { Op } = require("sequelize");
-const model = require("../models/index");
-const User = model.User;
-const Phone = model.Phone;
-const Course = model.Course;
+const { Role, Course, Phone, User } = require("../models/index");
 
 module.exports = {
   index: async (req, res) => {
@@ -82,7 +79,7 @@ module.exports = {
     //   user.phone = phoneInstance?.phone;
     // }
 
-    res.render("users/index", { users });
+    res.render("users/index", { users, req });
   },
 
   add: async (req, res) => {
@@ -167,7 +164,7 @@ module.exports = {
         const coursesIntance = await Promise.all(
           courses.map((courseId) => Course.findByPk(courseId))
         );
-        const user=await User.findByPk(id);
+        const user = await User.findByPk(id);
         await user.setCourses(coursesIntance);
       }
     }
@@ -183,5 +180,37 @@ module.exports = {
       },
     });
     res.redirect("/users");
+  },
+  permission: async (req, res) => {
+    const {id} = req.params;
+    const roles = await Role.findAll();
+    const user = await User.findByPk(id,{
+      include: {
+        model: Role,
+        as: 'roles'
+      }
+    })
+    res.render("users/permission", { roles, user });
+  },
+  handlePermission: async (req, res) => {
+    const { id } = req.params;
+    if (!req.body.roles) {
+      req.body.roles = [];
+    }
+    const roles = Array.isArray(req.body.roles)
+      ? req.body.roles
+      : [req.body.roles];
+    // const roles = req.body.roles
+    const user = await User.findByPk(id);
+    if (user) {
+      const roleIntances = await Promise.all(
+        roles.map(async (id) => {
+          const roleIntance = await Role.findByPk(id);
+          return roleIntance;
+        })
+      );
+      await user.setRoles(roleIntances);
+    }
+    res.redirect('/users/permission/' + id);
   },
 };

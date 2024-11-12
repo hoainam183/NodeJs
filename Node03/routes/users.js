@@ -2,18 +2,20 @@ var express = require('express');
 var router = express.Router();
 const userController = require("../controllers/user.controller.js")
 const {User,Phone, Post,Course} = require('../models/index.js');
-const { where } = require('sequelize');
-
+const permission = require('../middlewares/permission.middleware.js')
 /* GET users listing. */
-router.get('/', userController.index);
+router.get('/',permission('user.read'), userController.index);
 
-router.get('/add', userController.add);
-router.post('/add', userController.handleAdd);
+router.get('/add', permission('user.create'), userController.add);
+router.post('/add', permission('user.create'), userController.handleAdd);
 
-router.get('/edit/:id', userController.edit);
-router.post('/edit/:id', userController.handleEdit);
+router.get('/edit/:id',permission('user.update'), userController.edit);
+router.post('/edit/:id',permission('user.update'), userController.handleEdit);
 
-router.post("/delete/:id",userController.delete);
+router.post("/delete/:id", permission('user.delete'), userController.delete);
+
+router.get('/permission/:id',permission('user.update'), userController.permission);
+router.post('/permission/:id',permission('user.update'), userController.handlePermission);
 
 router.get('/test-assoc',async(req,res) => {
     // Lấy dữ liệu liên kết --> Lấy được instance
